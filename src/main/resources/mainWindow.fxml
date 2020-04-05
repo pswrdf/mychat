@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.pswrdf.mychat.MainController">
+   <center>
+      <TextArea fx:id="chatArea" editable="false" prefWidth="400.0" wrapText="true" BorderPane.alignment="CENTER" />
+   </center>
+   <right>
+      <ListView fx:id="userList" prefWidth="150.0" BorderPane.alignment="CENTER" />
+   </right>
+   <bottom>
+      <HBox alignment="CENTER">
+         <Label text="username" fx:id="usernameLabel" /> <TextArea fx:id="messageField" prefHeight="50.0" BorderPane.alignment="CENTER" HBox.hgrow="SOMETIMES" />
+      <Button fx:id="sendButton" alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#send" text="send">
+            <HBox.margin>
+               <Insets />
+            </HBox.margin></Button>
+      </HBox>
+   </bottom>
+</BorderPane>

@@ -1,0 +1,61 @@
+plugins {
+    id 'application'
+    id 'com.google.protobuf' version '0.8.8'
+    id 'idea'
+    id 'java'
+    id 'org.openjfx.javafxplugin' version '0.0.8'
+}
+
+javafx {
+    version = "14"
+    modules = ['javafx.controls']
+}
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+repositories {
+    maven {
+        url "https://maven-central.storage-download.googleapis.com/repos/central/data/"
+    }
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    implementation 'io.grpc:grpc-netty-shaded:1.28.0'
+    implementation 'io.grpc:grpc-protobuf:1.28.0'
+    implementation 'io.grpc:grpc-stub:1.28.0'
+    compileOnly 'javax.annotation:jsr250-api:1.0'
+}
+application {
+    mainClassName = 'ru.pswrdf.mychat.Main'
+}
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.11.0"
+    }
+    plugins {
+        grpc {
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.28.0'
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {}
+        }
+    }
+    generatedFilesBaseDir = "$projectDir/gen"
+}
+clean {
+    delete protobuf.generatedFilesBaseDir
+}
+idea {
+    module {
+        sourceDirs += file("$projectDir/gen");
+    }
+}
+run {
+//    -Pexec.args="8090"
+    if(project.hasProperty("exec.args")) args project.property("exec.args").split()
+}

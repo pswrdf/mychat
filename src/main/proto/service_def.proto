@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option java_package = "ru.mychat.protostub";
+import "google/protobuf/empty.proto";
+
+service Mychat {
+    rpc Join (User) returns (google.protobuf.Empty) {
+    }
+    rpc JoinedUsers (User) returns (stream User) {
+    }
+    rpc Send (ChatMsg) returns (google.protobuf.Empty) {
+    }
+    rpc ReceiveMessages (User) returns (stream ChatMsg) {
+    }
+}
+
+message ChatMsg {
+    string sender = 1;
+    string msg = 2;
+}
+message User {
+    string username = 1;
+}

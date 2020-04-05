@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="ru.pswrdf.mychat.LoginController">
+   <children>
+      <TextField fx:id="remoteHost" text="localhost" />
+      <TextField fx:id="remotePort" text="8090" />
+      <TextField fx:id="userName" text="username1" />
+      <Button fx:id="joinButton" alignment="CENTER" mnemonicParsing="false" prefWidth="113.0" text="Join" onAction="#join">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </Button>
+   </children>
+   <padding>
+      <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+   </padding>
+</VBox>
